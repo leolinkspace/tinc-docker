@@ -1,0 +1,30 @@
+version: '3'
+
+services:
+  adunaphel:
+    restart: always
+    image: zerpex/tinc
+    container_name: tool-vpn_tinc
+    hostname: vpn
+    domainname: jayjay.pm
+    network_mode: "host"
+    devices:
+      - /dev/net/tun
+    cap_add:
+      - NET_ADMIN
+    volumes:
+      - ./files/tinc:/etc/tinc
+      - /etc/localtime:/etc/localtime:ro
+    environment:
+      - VPN_NAME=roxxorvpn
+      - EXTERNAL_NIC_NAME=roxxorexnic
+      - EXTERNAL_NIC_ADDRESS_NAME=roxxorexnic_public_IP
+      - PUBLIC_IP_RANGE=10.0.0.1/32
+      - VPN_INTERFACE=tun0
+    ports:
+      - 655:655
+      - 655/udp:655/udp
+
+volumes:
+  files:
+    driver: local
