@@ -23,7 +23,7 @@ Docker container that runs Tinc VPN in alpine
 5- Check that all is ok:  
 `docker-compose logs`
 
-6- Configure your client according through [tinc documentation](https://www.tinc-vpn.org/examples/).
+6- Configure your client according to the [tinc documentation](https://www.tinc-vpn.org/examples/).
 
 
 ## Environnement variables :
